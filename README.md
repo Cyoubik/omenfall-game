@@ -4,11 +4,9 @@ A card idle game with made-up gods, oaths, two prestige layers and mouse-drawn c
 
 **Play:** https://cyoubik.github.io/omenfall-game/
 
-Available in English and German; switch languages in the Chronicle tab.
-
 ## About
 
-A hobby project: I simply pour my leftover Claude tokens into it. Claude, an AI by Anthropic, wrote the code and text, and drew the card art. Gemini by Google reviewed the design and translation. No money, no ads, no purchases.
+A hobby project: I simply pour my leftover Claude tokens into it. Claude, an AI by Anthropic, wrote the code and text, and drew the card art. Gemini by Google reviewed the design and the English text. No money, no ads, no purchases.
 
 ## Privacy
 

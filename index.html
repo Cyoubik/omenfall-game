@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omenfall</title>
-    <script type="module" crossorigin src="./assets/index-Dff8Ob-f.js"></script>
+    <script type="module" crossorigin src="./assets/index-DIgdoWsR.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-XwDstYU-.css">
   </head>
   <body>
@@ -15,39 +15,31 @@
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
       </filter>
     </svg>
-    <p
-      id="save-warning"
-      class="save-warning"
-      hidden
-      data-en="Your save could not be read and will not be overwritten, so saving is disabled for this session. In the Chronicle, you can import a save or delete the unreadable one."
-    >
-      Dein Spielstand konnte nicht gelesen werden und wird nicht überschrieben. Diese Sitzung speichert deshalb nicht.
-      In der Chronik kannst du einen Stand importieren oder den alten löschen.
-    </p>
+    <p id="save-warning" class="save-warning" hidden>Your save could not be read and will not be overwritten, so saving is disabled for this session. In the Chronicle, you can import a save or delete the unreadable one.</p>
     <header class="topbar">
       <div class="brand">
         <h1>Omenfall</h1>
-        <p data-en="Forgotten gods await your prayer">Vergessene Götter warten auf dein Gebet</p>
+        <p>Forgotten gods await your prayer</p>
       </div>
       <div class="purse">
-        <span class="purse-label" data-en="Essence">Essenz</span>
+        <span class="purse-label">Essence</span>
         <strong id="essence">0</strong>
         <span id="essence-rate" class="purse-rate"></span>
       </div>
       <div id="relic-purse" class="purse" hidden>
-        <span class="purse-label" data-en="Relics">Reliquien</span>
+        <span class="purse-label">Relics</span>
         <strong id="relics">0</strong>
         <span id="relics-ready" class="purse-rate"></span>
       </div>
       <div id="spark-purse" class="purse" hidden>
-        <span class="purse-label" data-en="Primal Sparks">Urfunken</span>
+        <span class="purse-label">Primal Sparks</span>
         <strong id="sparks">0</strong>
         <span id="sparks-epoch" class="purse-rate"></span>
       </div>
       <div class="rank">
         <div class="rank-line">
           <strong id="rank-name"></strong>
-          <span id="rank-next" title="Gezogene Karten in diesem Durchlauf" data-en-title="Cards drawn this run"></span>
+          <span id="rank-next" title="Cards drawn this run"></span>
         </div>
         <div class="bar"><div id="rank-bar" class="bar-fill"></div></div>
       </div>
@@ -57,52 +49,44 @@
       <section class="altar" id="altar" aria-label="Altar">
         <div class="altar-head">
           <button id="open-pack" class="offer" type="button">
-            <span class="offer-title" data-en="Make an offering">Opfergabe darbringen</span>
-            <span class="offer-sub"><span id="offer-sub"></span><span class="key-hint" data-en=" · Space"> · Leertaste</span></span>
+            <span class="offer-title">Make an offering</span>
+            <span class="offer-sub"><span id="offer-sub"></span><span class="key-hint"> · Space</span></span>
             <span class="offer-charge"><span id="offer-charge"></span></span>
           </button>
           <dl class="altar-stats">
             <div><dt>Altar</dt><dd id="stat-cooldown"></dd></div>
-            <div><dt data-en="Luck">Glück</dt><dd id="stat-luck"></dd></div>
-            <div><dt data-en="Automation">Automatik</dt><dd id="stat-auto"></dd></div>
-            <div><dt data-en="Oath">Schwur</dt><dd id="stat-oath"></dd></div>
+            <div><dt>Luck</dt><dd id="stat-luck"></dd></div>
+            <div><dt>Automation</dt><dd id="stat-auto"></dd></div>
+            <div><dt>Oath</dt><dd id="stat-oath"></dd></div>
           </dl>
         </div>
         <p id="trial-banner" class="trial-banner" hidden></p>
-        <button
-          id="oath-prompt"
-          class="oath-prompt"
-          type="button"
-          hidden
-          data-en="No active Oath: divine cards will not drop. Swear an Oath now."
-        >
-          Kein Schwur: Göttliche Karten bleiben aus. Jetzt einen Schwur leisten
-        </button>
+        <button id="oath-prompt" class="oath-prompt" type="button" hidden>No active Oath: divine cards will not drop. Swear an Oath now.</button>
         <button id="ability" class="ability" type="button" hidden>
           <span id="ability-sigil" class="ability-sigil"></span>
           <span class="ability-text">
-            <span class="ability-name"><span id="ability-name"></span><span class="key-hint" data-en=" (key Q)"> (Taste Q)</span></span>
+            <span class="ability-name"><span id="ability-name"></span><span class="key-hint"> (key Q)</span></span>
             <span id="ability-desc" class="ability-desc"></span>
           </span>
           <span id="ability-status" class="ability-status"></span>
           <span class="ability-charge"><span id="ability-charge"></span></span>
         </button>
-        <div id="stage" class="stage" title="Klicken zeigt alle Karten sofort" data-en-title="Click to show all cards at once">
-          <p class="stage-empty" data-en="The altar is cold. Make your first offering.">Der Altar ist kalt. Bringe deine erste Opfergabe dar.</p>
+        <div id="stage" class="stage" title="Click to show all cards at once">
+          <p class="stage-empty">The altar is cold. Make your first offering.</p>
         </div>
-        <ol id="finds" class="finds" aria-label="Letzte Funde" data-en-label="Recent finds"></ol>
+        <ol id="finds" class="finds" aria-label="Recent finds"></ol>
       </section>
 
-      <section class="panel" aria-label="Spielbereiche" data-en-label="Game areas">
+      <section class="panel" aria-label="Game areas">
         <nav class="tabs" role="tablist">
-          <button role="tab" type="button" data-tab="shrine" aria-selected="true" data-en="Shrine">Schrein</button>
+          <button role="tab" type="button" data-tab="shrine" aria-selected="true">Shrine</button>
           <button role="tab" type="button" data-tab="collection" aria-selected="false">
-            <span data-en="Collection">Sammlung</span> <span id="collection-count"></span>
+            <span>Collection</span> <span id="collection-count"></span>
           </button>
-          <button role="tab" type="button" data-tab="dusk" aria-selected="false" hidden data-en="Dusk">Dämmerung</button>
-          <button role="tab" type="button" data-tab="worldfire" aria-selected="false" hidden data-en="Worldfire">Weltenbrand</button>
-          <button role="tab" type="button" data-tab="trials" aria-selected="false" hidden data-en="Trials">Prüfungen</button>
-          <button role="tab" type="button" data-tab="chronicle" aria-selected="false" data-en="Chronicle">Chronik</button>
+          <button role="tab" type="button" data-tab="dusk" aria-selected="false" hidden>Dusk</button>
+          <button role="tab" type="button" data-tab="worldfire" aria-selected="false" hidden>Worldfire</button>
+          <button role="tab" type="button" data-tab="trials" aria-selected="false" hidden>Trials</button>
+          <button role="tab" type="button" data-tab="chronicle" aria-selected="false">Chronicle</button>
         </nav>
         <div id="tab-shrine" class="tab-body"></div>
         <div id="tab-collection" class="tab-body" hidden></div>
@@ -114,34 +98,23 @@
     </main>
 
     <dialog id="offline-dialog" class="dialog">
-      <h2 data-en="While you were away">Während du fort warst</h2>
+      <h2>While you were away</h2>
       <p id="offline-text"></p>
-      <form method="dialog"><button class="btn" type="submit" data-en="Continue">Weiter</button></form>
+      <form method="dialog"><button class="btn" type="submit">Continue</button></form>
     </dialog>
 
     <dialog id="dusk-dialog" class="dialog dialog-dusk">
-      <h2 data-en="Call the Dusk?">Die Dämmerung herbeirufen?</h2>
+      <h2>Call the Dusk?</h2>
       <p id="dusk-gain" class="dusk-gain"></p>
-      <h3 data-en="What fades">Das vergeht</h3>
-      <p data-en="Essence, all upgrades, your rank, card copies and levels, this run's set bonuses and your Oath.">
-        Essenz, alle Upgrades, dein Rang, Kartenkopien und -stufen, Set-Boni dieses Durchlaufs und dein Schwur.
-      </p>
-      <h3>Das bleibt</h3>
-      <p data-en="Relics, purchased Relics, the Codex of every card ever found, and your lifetime totals.">
-        Reliquien, gekaufte Reliquien, der Kodex aller je entdeckten Karten und deine Gesamtzahlen.
-      </p>
+      <h3>What fades</h3>
+      <p>Essence, all upgrades, your rank, card copies and levels, this run's set bonuses and your Oath.</p>
+      <h3>What remains</h3>
+      <p>Relics, purchased Relics, the Codex of every card ever found, and your lifetime totals.</p>
       <p id="dusk-blessing" class="dusk-reward" hidden></p>
-      <p
-        id="dusk-reward"
-        class="dusk-reward"
-        hidden
-        data-en="The Broken Sky unlocks: 13 new cards become available, and you can now swear Oaths."
-      >
-        Der Zerbrochene Himmel öffnet sich: 13 neue Karten werden ziehbar, und du kannst nun Schwüre leisten.
-      </p>
+      <p id="dusk-reward" class="dusk-reward" hidden>The Broken Sky unlocks: 13 new cards become available, and you can now swear Oaths.</p>
       <form method="dialog" class="dialog-actions">
-        <button class="btn" type="submit" value="cancel" data-en="Not yet">Noch nicht</button>
-        <button class="btn btn-dusk" type="submit" value="confirm" data-en="Call the Dusk">Dämmerung herbeirufen</button>
+        <button class="btn" type="submit" value="cancel">Not yet</button>
+        <button class="btn btn-dusk" type="submit" value="confirm">Call the Dusk</button>
       </form>
     </dialog>
 
@@ -149,40 +122,27 @@
       <h2 id="trial-title"></h2>
       <p id="trial-rule"></p>
       <p id="trial-goal"></p>
-      <p
-        class="muted"
-        data-en="Your current run ends and your Oath lapses: Essence, upgrades, rank and card copies reset. Pending Relics, the epoch and all prestige purchases remain."
-      >
-        Dein laufender Durchlauf endet und dein Schwur verfällt: Essenz, Upgrades, Rang und Kartenkopien beginnen neu.
-        Offene Reliquien, die Epoche und alle Prestige-Käufe bleiben.
-      </p>
+      <p class="muted">Your current run ends and your Oath lapses: Essence, upgrades, rank and card copies reset. Pending Relics, the epoch and all prestige purchases remain.</p>
       <label class="trial-oath">
-        <span data-en="Oath for this trial">Schwur für diese Prüfung</span>
+        <span>Oath for this trial</span>
         <select id="trial-oath"></select>
       </label>
       <form method="dialog" class="dialog-actions">
-        <button class="btn" type="submit" value="cancel" data-en="Not yet">Noch nicht</button>
-        <button class="btn btn-trial" type="submit" value="confirm" data-en="Begin trial">Prüfung beginnen</button>
+        <button class="btn" type="submit" value="cancel">Not yet</button>
+        <button class="btn btn-trial" type="submit" value="confirm">Begin trial</button>
       </form>
     </dialog>
 
     <dialog id="fire-dialog" class="dialog dialog-fire">
-      <h2 data-en="Kindle the Worldfire?">Den Weltenbrand entfachen?</h2>
+      <h2>Kindle the Worldfire?</h2>
       <p id="fire-gain" class="dusk-gain"></p>
-      <h3 data-en="What burns">Das verbrennt</h3>
-      <p
-        data-en="Everything from this epoch: Relics and all Relic purchases, the pack bonus from Relics, the Golden Scale, plus Essence, upgrades, rank, card copies and your Oath."
-      >
-        Alles aus dieser Epoche: Reliquien samt aller Reliquien-Käufe, der Packbonus aus Reliquien, die Goldene Waage,
-        dazu Essenz, Upgrades, Rang, Kartenkopien und dein Schwur.
-      </p>
-      <h3>Das bleibt</h3>
-      <p data-en="Primal Sparks and their purchases, the Codex, every Blessing, unlocked Oaths and your lifetime totals.">
-        Urfunken und ihre Käufe, der Kodex, jeder Segen, freigeschaltete Schwüre und deine Gesamtzahlen.
-      </p>
+      <h3>What burns</h3>
+      <p>Everything from this epoch: Relics and all Relic purchases, the pack bonus from Relics, the Golden Scale, plus Essence, upgrades, rank, card copies and your Oath.</p>
+      <h3>What remains</h3>
+      <p>Primal Sparks and their purchases, the Codex, every Blessing, unlocked Oaths and your lifetime totals.</p>
       <form method="dialog" class="dialog-actions">
-        <button class="btn" type="submit" value="cancel" data-en="Not yet">Noch nicht</button>
-        <button class="btn btn-fire" type="submit" value="confirm" data-en="Kindle the Worldfire">Weltenbrand entfachen</button>
+        <button class="btn" type="submit" value="cancel">Not yet</button>
+        <button class="btn btn-fire" type="submit" value="confirm">Kindle the Worldfire</button>
       </form>
     </dialog>
 
@@ -192,17 +152,17 @@
       <p id="oath-drawback" class="oath-drawback"></p>
       <p id="oath-note"></p>
       <form method="dialog" class="dialog-actions">
-        <button class="btn" type="submit" value="cancel" data-en="Not yet">Noch nicht</button>
-        <button class="btn btn-oath" type="submit" value="confirm" data-en="Swear the oath">Schwur leisten</button>
+        <button class="btn" type="submit" value="cancel">Not yet</button>
+        <button class="btn btn-oath" type="submit" value="confirm">Swear the Oath</button>
       </form>
     </dialog>
 
     <dialog id="reset-dialog" class="dialog dialog-danger">
-      <h2 data-en="Really delete your save?">Spielstand wirklich löschen?</h2>
-      <p data-en="All cards, upgrades and ranks will be permanently lost.">Alle Karten, Upgrades und Ränge gehen unwiderruflich verloren.</p>
+      <h2>Really delete your save?</h2>
+      <p>All cards, upgrades and ranks will be permanently lost.</p>
       <form method="dialog" class="dialog-actions">
-        <button class="btn" type="submit" value="cancel" data-en="Cancel">Abbrechen</button>
-        <button class="btn btn-danger" type="submit" value="confirm" data-en="Delete permanently">Endgültig löschen</button>
+        <button class="btn" type="submit" value="cancel">Cancel</button>
+        <button class="btn btn-danger" type="submit" value="confirm">Delete permanently</button>
       </form>
     </dialog>
 
