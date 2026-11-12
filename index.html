@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omenfall</title>
-    <script type="module" crossorigin src="./assets/index-Dg6M_stq.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BztILhIP.css">
+    <script type="module" crossorigin src="./assets/index-C1dywvwa.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B9G_CsC3.css">
   </head>
   <body>
     <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
@@ -43,6 +43,7 @@
         </div>
         <div class="bar"><div id="rank-bar" class="bar-fill"></div></div>
       </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">☾</button>
     </header>
 
     <main class="layout">
@@ -58,8 +59,14 @@
             <div><dt>Luck</dt><dd id="stat-luck"></dd></div>
             <div><dt>Automation</dt><dd id="stat-auto"></dd></div>
             <div><dt>Oath</dt><dd id="stat-oath"></dd></div>
+            <div hidden><dt>Omen</dt><dd id="stat-omen"></dd></div>
           </dl>
         </div>
+        <button id="falling-omen" class="falling-omen" type="button" hidden aria-label="Catch the falling omen (key O)" title="Catch the falling omen (key O)"></button>
+        <aside id="hint" class="hint" hidden aria-live="polite">
+          <p id="hint-text"></p>
+          <button id="hint-close" class="btn btn-small" type="button">Got it</button>
+        </aside>
         <p id="trial-banner" class="trial-banner" hidden></p>
         <button id="oath-prompt" class="oath-prompt" type="button" hidden>No active Oath: divine cards will not drop. Swear an Oath now.</button>
         <button id="ability" class="ability" type="button" hidden>
@@ -86,6 +93,7 @@
           <button role="tab" type="button" data-tab="dusk" aria-selected="false" hidden>Dusk</button>
           <button role="tab" type="button" data-tab="worldfire" aria-selected="false" hidden>Worldfire</button>
           <button role="tab" type="button" data-tab="trials" aria-selected="false" hidden>Trials</button>
+          <button role="tab" type="button" data-tab="portents" aria-selected="false" hidden>Portents</button>
           <button role="tab" type="button" data-tab="chronicle" aria-selected="false">Chronicle</button>
         </nav>
         <div id="tab-shrine" class="tab-body"></div>
@@ -93,6 +101,7 @@
         <div id="tab-dusk" class="tab-body" hidden></div>
         <div id="tab-worldfire" class="tab-body" hidden></div>
         <div id="tab-trials" class="tab-body" hidden></div>
+        <div id="tab-portents" class="tab-body" hidden></div>
         <div id="tab-chronicle" class="tab-body" hidden></div>
       </section>
     </main>
