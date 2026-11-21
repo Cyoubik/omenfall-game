@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omenfall</title>
-    <script type="module" crossorigin src="./assets/index-DyOY2doi.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DVUL6bjJ.css">
+    <script type="module" crossorigin src="./assets/index-C-ugZyul.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dkp_J4yq.css">
   </head>
   <body>
     <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
@@ -78,9 +78,12 @@
                 <span id="offer-bulk-bar" class="offer-bulk-bar"></span>
               </span>
             </button>
-            <button id="bulk-toggle" class="btn btn-small bulk-toggle" type="button" aria-pressed="true" title="Toggle Bulk Draw (open stored altar charges together)">Bulk Draw: On</button>
+            <div class="offer-controls">
+              <button id="bulk-toggle" class="btn btn-small bulk-toggle" type="button" aria-pressed="true" title="Toggle Bulk Draw (open stored altar charges together)">Bulk Draw: On</button>
+              <span class="offer-keys key-hint" aria-hidden="true">M: Buy all · Q: Ability · O: Omen</span>
+            </div>
           </div>
-          <dl class="altar-stats">
+          <dl id="altar-stats" class="altar-stats" role="button" tabindex="0" title="Open full stat breakdown in Chronicle" aria-label="Altar stats — open breakdown in Chronicle">
             <div><dt>Pack</dt><dd id="stat-pack"></dd></div>
             <div><dt>Essence</dt><dd id="stat-essence"></dd></div>
             <div><dt>Altar</dt><dd id="stat-cooldown"></dd></div>
@@ -128,17 +131,19 @@
             <span id="panel-omen" class="panel-omen" hidden></span>
           </div>
           <nav class="tabs" role="tablist">
-          <button role="tab" type="button" data-tab="shrine" aria-selected="true">Shrine</button>
+          <button role="tab" type="button" data-tab="shrine" aria-selected="true">
+            <span>Shrine</span> <span id="shrine-count" class="tab-count" hidden></span>
+          </button>
           <button role="tab" type="button" data-tab="collection" aria-selected="false">
-            <span>Collection</span> <span id="collection-count"></span>
+            <span>Collection</span> <span id="collection-count" class="tab-count"></span>
           </button>
           <button role="tab" type="button" data-tab="dusk" aria-selected="false" hidden>Dusk</button>
           <button role="tab" type="button" data-tab="worldfire" aria-selected="false" hidden>Worldfire</button>
           <button role="tab" type="button" data-tab="trials" aria-selected="false" hidden>
-            <span>Trials</span> <span id="trials-count"></span>
+            <span>Trials</span> <span id="trials-count" class="tab-count"></span>
           </button>
           <button role="tab" type="button" data-tab="portents" aria-selected="false" hidden>
-            <span>Portents</span> <span id="portents-count"></span>
+            <span>Portents</span> <span id="portents-count" class="tab-count"></span>
           </button>
           <button role="tab" type="button" data-tab="chronicle" aria-selected="false">Chronicle</button>
           <button role="tab" type="button" data-tab="notes" aria-selected="false">Patch Notes</button>
