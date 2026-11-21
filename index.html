@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omenfall</title>
-    <script type="module" crossorigin src="./assets/index-Cwf9JdqM.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BbxPGE8R.css">
+    <script type="module" crossorigin src="./assets/index-2obljREa.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cl_GJM7n.css">
   </head>
   <body>
     <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
@@ -38,10 +38,14 @@
       </div>
       <div class="rank">
         <div class="rank-line">
-          <strong id="rank-name"></strong>
+          <span class="goal-head">
+            <strong id="rank-name"></strong>
+            <button id="rank-info" class="goal-info-btn" type="button" aria-expanded="false" aria-controls="rank-tip" aria-label="Show rank details">?</button>
+          </span>
           <span id="rank-next" title="Cards drawn this run"></span>
         </div>
-        <div class="bar"><div id="rank-bar" class="bar-fill"></div></div>
+        <div class="bar" role="progressbar" aria-label="Rank progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="rank-bar" class="bar-fill"></div></div>
+        <p id="rank-tip" class="goal-tip" hidden></p>
         <div id="goal" class="goal">
           <div class="goal-line">
             <span class="goal-head">
@@ -50,7 +54,7 @@
             </span>
             <span id="goal-next"></span>
           </div>
-          <div class="bar"><div id="goal-bar" class="bar-fill"></div></div>
+          <div class="bar" role="progressbar" aria-label="Goal progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="goal-bar" class="bar-fill"></div></div>
           <p id="goal-tip" class="goal-tip" hidden></p>
         </div>
       </div>
@@ -75,11 +79,13 @@
             <button id="bulk-toggle" class="btn btn-small bulk-toggle" type="button" aria-pressed="true" title="Toggle Bulk Draw (open stored altar charges together)">Bulk Draw: On</button>
           </div>
           <dl class="altar-stats">
+            <div><dt>Pack</dt><dd id="stat-pack"></dd></div>
             <div><dt>Essence</dt><dd id="stat-essence"></dd></div>
             <div><dt>Altar</dt><dd id="stat-cooldown"></dd></div>
             <div><dt>Luck</dt><dd id="stat-luck"></dd></div>
             <div><dt>Automation</dt><dd id="stat-auto"></dd></div>
             <div><dt>Oath</dt><dd id="stat-oath"></dd></div>
+            <div hidden><dt>Mercy</dt><dd id="stat-mercy"></dd></div>
             <div hidden><dt>Omen</dt><dd id="stat-omen"></dd></div>
           </dl>
         </div>
@@ -102,6 +108,10 @@
         <div id="stage" class="stage" title="Click to break the seal, or to show all cards at once">
           <p class="stage-empty">The altar is cold. Make your first offering.</p>
         </div>
+        <div id="finds-head" class="finds-head" hidden>
+          <span class="muted">Recent finds</span>
+          <button id="finds-clear" class="btn btn-small" type="button">Clear</button>
+        </div>
         <ol id="finds" class="finds" aria-label="Recent finds"></ol>
       </section>
 
@@ -111,6 +121,7 @@
             <span id="panel-essence"></span>
             <span id="panel-relics" hidden></span>
             <span id="panel-sparks" hidden></span>
+            <span id="panel-omen" class="panel-omen" hidden></span>
           </div>
           <nav class="tabs" role="tablist">
           <button role="tab" type="button" data-tab="shrine" aria-selected="true">Shrine</button>
@@ -119,8 +130,12 @@
           </button>
           <button role="tab" type="button" data-tab="dusk" aria-selected="false" hidden>Dusk</button>
           <button role="tab" type="button" data-tab="worldfire" aria-selected="false" hidden>Worldfire</button>
-          <button role="tab" type="button" data-tab="trials" aria-selected="false" hidden>Trials</button>
-          <button role="tab" type="button" data-tab="portents" aria-selected="false" hidden>Portents</button>
+          <button role="tab" type="button" data-tab="trials" aria-selected="false" hidden>
+            <span>Trials</span> <span id="trials-count"></span>
+          </button>
+          <button role="tab" type="button" data-tab="portents" aria-selected="false" hidden>
+            <span>Portents</span> <span id="portents-count"></span>
+          </button>
           <button role="tab" type="button" data-tab="chronicle" aria-selected="false">Chronicle</button>
           <button role="tab" type="button" data-tab="notes" aria-selected="false">Patch Notes</button>
         </nav>
@@ -151,6 +166,7 @@
       <h3>What remains</h3>
       <p>Relics, purchased Relics, the Codex of every card ever found, and your lifetime totals.</p>
       <p id="dusk-blessing" class="dusk-reward" hidden></p>
+      <p id="dusk-patron" class="muted" hidden></p>
       <p id="dusk-reward" class="dusk-reward" hidden>The Broken Sky unlocks: 13 new cards become available, and you can now swear Oaths.</p>
       <form method="dialog" class="dialog-actions">
         <button class="btn" type="submit" value="cancel">Not yet</button>
@@ -162,6 +178,7 @@
       <h2 id="trial-title"></h2>
       <p id="trial-rule"></p>
       <p id="trial-goal"></p>
+      <p id="trial-reward-preview" class="dusk-reward"></p>
       <p class="muted">Your current run ends and your Oath lapses: Essence, upgrades, rank and card copies reset. Pending Relics, the epoch and all prestige purchases remain.</p>
       <label class="trial-oath">
         <span>Oath for this trial</span>
@@ -189,6 +206,7 @@
       <p>Everything from this epoch: Relics and all Relic purchases, the pack bonus from Relics, the Golden Scale, plus Essence, upgrades, rank, card copies and your Oath.</p>
       <h3>What remains</h3>
       <p>Primal Sparks and their purchases, the Codex, every Blessing, unlocked Oaths and your lifetime totals.</p>
+      <p id="fire-milestone" class="dusk-reward" hidden></p>
       <form method="dialog" class="dialog-actions">
         <button class="btn" type="submit" value="cancel">Not yet</button>
         <button class="btn btn-fire" type="submit" value="confirm">Kindle the Worldfire</button>
