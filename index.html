@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omenfall</title>
-    <script type="module" crossorigin src="./assets/index-2obljREa.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Cl_GJM7n.css">
+    <script type="module" crossorigin src="./assets/index-DyOY2doi.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DVUL6bjJ.css">
   </head>
   <body>
     <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
@@ -37,15 +37,17 @@
         <span id="sparks-epoch" class="purse-rate"></span>
       </div>
       <div class="rank">
-        <div class="rank-line">
-          <span class="goal-head">
-            <strong id="rank-name"></strong>
-            <button id="rank-info" class="goal-info-btn" type="button" aria-expanded="false" aria-controls="rank-tip" aria-label="Show rank details">?</button>
-          </span>
-          <span id="rank-next" title="Cards drawn this run"></span>
+        <div class="rank-block">
+          <div class="rank-line">
+            <span class="goal-head">
+              <strong id="rank-name"></strong>
+              <button id="rank-info" class="goal-info-btn" type="button" aria-expanded="false" aria-controls="rank-tip" aria-label="Show rank details">?</button>
+            </span>
+            <span id="rank-next" title="Cards drawn this run"></span>
+          </div>
+          <div class="bar" role="progressbar" aria-label="Rank progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="rank-bar" class="bar-fill"></div></div>
+          <p id="rank-tip" class="goal-tip" hidden></p>
         </div>
-        <div class="bar" role="progressbar" aria-label="Rank progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="rank-bar" class="bar-fill"></div></div>
-        <p id="rank-tip" class="goal-tip" hidden></p>
         <div id="goal" class="goal">
           <div class="goal-line">
             <span class="goal-head">
@@ -83,10 +85,10 @@
             <div><dt>Essence</dt><dd id="stat-essence"></dd></div>
             <div><dt>Altar</dt><dd id="stat-cooldown"></dd></div>
             <div><dt>Luck</dt><dd id="stat-luck"></dd></div>
-            <div><dt>Automation</dt><dd id="stat-auto"></dd></div>
+            <div class="altar-stat-wide" hidden><dt>Automation</dt><dd id="stat-auto"></dd></div>
             <div><dt>Oath</dt><dd id="stat-oath"></dd></div>
             <div hidden><dt>Mercy</dt><dd id="stat-mercy"></dd></div>
-            <div hidden><dt>Omen</dt><dd id="stat-omen"></dd></div>
+            <div class="altar-stat-wide" hidden><dt>Omen</dt><dd id="stat-omen"></dd></div>
           </dl>
         </div>
         <button id="falling-omen" class="falling-omen" type="button" hidden aria-label="Catch the falling omen (key O)" title="Catch the falling omen (key O)"></button>
@@ -105,14 +107,16 @@
           <span id="ability-status" class="ability-status"></span>
           <span class="ability-charge"><span id="ability-charge"></span></span>
         </button>
-        <div id="stage" class="stage" title="Click to break the seal, or to show all cards at once">
-          <p class="stage-empty">The altar is cold. Make your first offering.</p>
+        <div class="altar-body">
+          <div id="stage" class="stage" title="Click to break the seal, or to show all cards at once">
+            <p class="stage-empty">The altar is cold. Make your first offering.</p>
+          </div>
+          <div id="finds-head" class="finds-head" hidden>
+            <span class="muted">Recent finds</span>
+            <button id="finds-clear" class="btn btn-small" type="button">Clear</button>
+          </div>
+          <ol id="finds" class="finds" aria-label="Recent finds"></ol>
         </div>
-        <div id="finds-head" class="finds-head" hidden>
-          <span class="muted">Recent finds</span>
-          <button id="finds-clear" class="btn btn-small" type="button">Clear</button>
-        </div>
-        <ol id="finds" class="finds" aria-label="Recent finds"></ol>
       </section>
 
       <section class="panel" aria-label="Game areas">
@@ -140,14 +144,16 @@
           <button role="tab" type="button" data-tab="notes" aria-selected="false">Patch Notes</button>
         </nav>
         </div>
-        <div id="tab-shrine" class="tab-body"></div>
-        <div id="tab-collection" class="tab-body" hidden></div>
-        <div id="tab-dusk" class="tab-body" hidden></div>
-        <div id="tab-worldfire" class="tab-body" hidden></div>
-        <div id="tab-trials" class="tab-body" hidden></div>
-        <div id="tab-portents" class="tab-body" hidden></div>
-        <div id="tab-chronicle" class="tab-body" hidden></div>
-        <div id="tab-notes" class="tab-body" hidden></div>
+        <div id="panel-body" class="panel-body">
+          <div id="tab-shrine" class="tab-body"></div>
+          <div id="tab-collection" class="tab-body" hidden></div>
+          <div id="tab-dusk" class="tab-body" hidden></div>
+          <div id="tab-worldfire" class="tab-body" hidden></div>
+          <div id="tab-trials" class="tab-body" hidden></div>
+          <div id="tab-portents" class="tab-body" hidden></div>
+          <div id="tab-chronicle" class="tab-body" hidden></div>
+          <div id="tab-notes" class="tab-body" hidden></div>
+        </div>
       </section>
     </main>
 
